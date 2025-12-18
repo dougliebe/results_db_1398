@@ -41,6 +41,7 @@
     <button class="tab" role="tab" aria-selected="false" aria-controls="playersView" id="tab-players" data-target="playersView">Players</button>
     <button class="tab" role="tab" aria-selected="false" aria-controls="entriesView" id="tab-entries" data-target="entriesView">Entries</button>
     <button class="tab" role="tab" aria-selected="false" aria-controls="lineupPlayersView" id="tab-lineupPlayers" data-target="lineupPlayersView">Lineup Players</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="fieldExposureView" id="tab-fieldExposure" data-target="fieldExposureView">Field Exposure</button>
   </nav>
 
   <main>
@@ -56,6 +57,9 @@
     <section id="lineupPlayersView" role="tabpanel" aria-labelledby="tab-lineupPlayers" class="tab-panel">
       <!-- Lineup players exploded view renders here -->
     </section>
+    <section id="fieldExposureView" role="tabpanel" aria-labelledby="tab-fieldExposure" class="tab-panel">
+      <!-- Field exposure view renders here -->
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -69,6 +73,7 @@
   <script src="views/players.js"></script>
   <script src="views/entries.js"></script>
   <script src="views/lineup_players.js"></script>
+  <script src="views/field_exposure.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -8,7 +8,8 @@
     sort: {
       leaderboard: { key: 'points', dir: 'desc' },
       players: { key: 'percentDrafted', dir: 'desc' },
-      lineupPlayers: { key: 'entryId', dir: 'asc' }
+      lineupPlayers: { key: 'entryId', dir: 'asc' },
+      fieldExposure: { key: 'allOwn', dir: 'desc' }
     }
   }
 
@@ -100,6 +101,8 @@
       window.Views.Entries.render(active, state)
     } else if (active.id === 'lineupPlayersView') {
       window.Views.LineupPlayers.render(active, state)
+    } else if (active.id === 'fieldExposureView') {
+      window.Views.FieldExposure.render(active, state)
     }
   }
 
