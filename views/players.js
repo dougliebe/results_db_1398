@@ -51,6 +51,7 @@
     const hdrRow = h('tr')
     const columns = [
       { key: 'player', label: 'Player' },
+      { key: 'team', label: 'Team' },
       { key: 'rosterPosition', label: 'Roster Position' },
       { key: 'percentDrafted', label: '%Drafted' },
       { key: 'fpts', label: 'FPTS' }
@@ -93,6 +94,7 @@
       for (const r of rows) {
         const tr = h('tr')
         tr.appendChild(h('td', {}, r.player || ''))
+        tr.appendChild(h('td', {}, r.team || ''))
         tr.appendChild(h('td', {}, r.rosterPosition || ''))
         tr.appendChild(h('td', {}, r.percentDrafted == null ? '' : String(r.percentDrafted)))
         tr.appendChild(h('td', {}, r.fpts == null ? '' : String(r.fpts)))
