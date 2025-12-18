@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DFS Contest Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- PapaParse CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>DFS Contest Dashboard</h1>
+    <p class="subtitle">Upload a contest CSV to view standings and player summaries</p>
+  </header>
+
+  <section class="uploader">
+    <div id="dropzone" class="dropzone" aria-label="CSV Dropzone" tabindex="0">
+      <p>Drag & drop your CSV here, or</p>
+      <label for="fileInput" class="button">Choose File</label>
+      <input id="fileInput" type="file" accept=".csv,text/csv" aria-label="CSV File Input">
+    </div>
+    <div id="uploadStatus" class="upload-status" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="summary" id="summarySection">
+    <h2>Summary</h2>
+    <div id="summaryStats" class="summary-stats">
+      <div class="stat"><span class="label">Lineups:</span> <span id="statLineups">0</span></div>
+      <div class="stat"><span class="label">Players:</span> <span id="statPlayers">0</span></div>
+      <div class="stat"><span class="label">Unique Entries:</span> <span id="statUniqueEntries">0</span></div>
+      <div class="stat"><span class="label">Unique Players:</span> <span id="statUniquePlayers">0</span></div>
+    </div>
+    <div id="previewBlocks" class="previews"></div>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button class="tab active" role="tab" aria-selected="true" aria-controls="leaderboardView" id="tab-leaderboard" data-target="leaderboardView">Leaderboard</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="playersView" id="tab-players" data-target="playersView">Players</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="entriesView" id="tab-entries" data-target="entriesView">Entries</button>
+  </nav>
+
+  <main>
+    <section id="leaderboardView" role="tabpanel" aria-labelledby="tab-leaderboard" class="tab-panel active">
+      <!-- Leaderboard view renders here -->
+    </section>
+    <section id="playersView" role="tabpanel" aria-labelledby="tab-players" class="tab-panel">
+      <!-- Players view renders here -->
+    </section>
+    <section id="entriesView" role="tabpanel" aria-labelledby="tab-entries" class="tab-panel">
+      <!-- Entries view renders here -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Runs entirely in your browser. No data is uploaded to a server.</p>
+  </footer>
+
+  <!-- App scripts (order matters) -->
+  <script src="parse.js"></script>
+  <script src="views/leaderboard.js"></script>
+  <script src="views/players.js"></script>
+  <script src="views/entries.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
