@@ -9,7 +9,8 @@
       leaderboard: { key: 'points', dir: 'desc' },
       players: { key: 'percentDrafted', dir: 'desc' },
       lineupPlayers: { key: 'entryId', dir: 'asc' },
-      fieldExposure: { key: 'allOwn', dir: 'desc' }
+      fieldExposure: { key: 'allOwn', dir: 'desc' },
+      teamStacks: { key: 'ownPct', dir: 'desc' }
     }
   }
 
@@ -103,6 +104,8 @@
       window.Views.LineupPlayers.render(active, state)
     } else if (active.id === 'fieldExposureView') {
       window.Views.FieldExposure.render(active, state)
+    } else if (active.id === 'teamStacksView') {
+      window.Views.TeamStacks.render(active, state)
     }
   }
 
