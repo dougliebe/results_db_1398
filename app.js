@@ -106,6 +106,8 @@
       window.Views.FieldExposure.render(active, state)
     } else if (active.id === 'teamStacksView') {
       window.Views.TeamStacks.render(active, state)
+    } else if (active.id === 'duplicatesView') {
+      window.Views.Duplicates.render(active, state)
     }
   }
 

@@ -65,10 +65,17 @@
 
   function coerceTypes(lineupRows, playerRows) {
     const normalizedLineups = lineupRows.map(r => {
+      const entryName = isNonEmpty(r.entryName) ? String(r.entryName).trim() : ''
+      let username = entryName
+      if (entryName) {
+        const m = /^(.+?)\s*\(/.exec(entryName)
+        if (m && m[1]) username = m[1].trim()
+      }
       return {
         rank: coerceNumber(r.rank),
         entryId: isNonEmpty(r.entryId) ? String(r.entryId).trim() : '',
-        entryName: isNonEmpty(r.entryName) ? String(r.entryName).trim() : '',
+        entryName,
+        username,
         timeRemaining: coerceNumber(r.timeRemaining),
         points: coerceNumber(r.points),
         lineupRaw: isNonEmpty(r.lineupRaw) ? String(r.lineupRaw).trim() : ''
