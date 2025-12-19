@@ -119,6 +119,7 @@
     }
 
     const controls = h('div', { class: 'controls' })
+    const search = h('input', { type: 'text', placeholder: 'Search stack (comma-separated)…', 'aria-label': 'Search Stack' })
     const teamSelect = h('select', { 'aria-label': 'Filter by Team' },
       h('option', { value: '' }, 'All Teams')
     )
@@ -129,6 +130,7 @@
       h('option', { value: '3' }, 'Up to 3'),
       h('option', { value: '4', selected: 'selected' }, 'Up to 4')
     )
+    controls.appendChild(search)
     controls.appendChild(teamSelect)
     controls.appendChild(maxSizeSelect)
     container.appendChild(controls)
@@ -173,8 +175,17 @@
     function apply() {
       const team = teamSelect.value
       const maxSize = parseInt(maxSizeSelect.value, 10) || 4
+      const q = search.value.trim()
+      const terms = q ? q.split(',').map(s => s.trim().toLowerCase()).filter(Boolean) : []
       let rows = buildStacks(state, maxSize)
       if (team) rows = rows.filter(r => r.team === team)
+      if (terms.length) {
+        rows = rows.filter(r => {
+          const stackStr = String(r.stack || '').toLowerCase()
+          // AND match: all terms must appear in the stack string
+          return terms.every(t => stackStr.includes(t))
+        })
+      }
       rows = sortData(rows, sortState.key, sortState.dir)
       tbody.innerHTML = ''
       for (const r of rows) {
@@ -187,6 +198,7 @@
       }
     }
 
+    search.addEventListener('input', () => apply())
     teamSelect.addEventListener('change', () => apply())
     maxSizeSelect.addEventListener('change', () => apply())
     apply()
